@@ -326,6 +326,10 @@ specific configuration in ``AppController``::
         // actions public, skipping the authentication check.
         $this->Authentication->addUnauthenticatedActions(['index', 'view']);
     }
+    
+    If you don’t have a user with a hashed password yet, comment the loadComponent('Authentication.Authentication'), $this->Authentication->addUnauthenticatedActions(['index', 'view']) (beforeFilter) and $this->Authentication->addUnauthenticatedActions(['login']); (UsersController.php) lines in your AppController and go to /users/add to create a new user picking email and password. Make sure to uncomment the lines we just temporarily commented!
+
+Try it out by visiting /articles/add before logging in! Since this action is not allowed, you will be redirected to the login page. After logging in successfully, CakePHP will automatically redirect you back to /articles/add.
 
 Logout
 ======
